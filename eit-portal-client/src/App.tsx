@@ -4,12 +4,21 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [data, setData] = useState<
+    Array<{
+      date: string;
+      temperatureC: number;
+      temperatureF: number;
+      summary: string;
+    }>
+  >();
 
   useEffect(() => {
-    fetch("/weatherforecast")
+    fetch("/weatherforecast", { mode: "cors" })
       .then((res) => res.json())
-      .then((data) => console.log({ data }));
-  });
+      .then((data) => setData(data))
+      .catch((err) => console.log({ err }));
+  }, []); // on mount only
 
   return (
     <div className="App">
@@ -44,6 +53,14 @@ function App() {
           </a>
         </p>
       </header>
+      <main>
+        {data?.map((x) => (
+          <div key={x.date}>
+            <div>{x.date}</div>
+            <div>{x.temperatureC}</div>
+          </div>
+        ))}
+      </main>
     </div>
   );
 }
