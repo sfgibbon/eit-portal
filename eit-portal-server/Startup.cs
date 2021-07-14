@@ -52,6 +52,7 @@ namespace eit_portal_server
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            app.UsePathBase("/api");
             app.UseRouting();
 
             app.UseCors();

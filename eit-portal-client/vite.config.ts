@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   server: {
     proxy: {
-      "/weatherforecast": {
+      "/api": {
         target: "http://localhost:5000",
         changeOrigin: true,
       },

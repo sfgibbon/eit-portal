@@ -14,7 +14,7 @@ function App() {
   >();
 
   useEffect(() => {
-    fetch("/weatherforecast", { mode: "cors" })
+    fetch("/api/weatherforecast", { mode: "cors" })
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log({ err }));
